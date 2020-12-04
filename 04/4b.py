@@ -2,7 +2,7 @@ with open("input.txt") as input_file:
     lines = input_file.read().split("\n\n")
 result = 0
 valid_hair = set("1234567890abcdef")
-valid_eyecolors = {"amb", "blu", "brn", "gry", "grn", "hzl", "oth"}
+valid_eyecolors = set("amb blu brn gry grn hzl oth".split())
 for line in lines:
     L = line.split()
     d = dict()
@@ -25,11 +25,11 @@ for line in lines:
         hcl = d["hcl"]
         ecl = d["ecl"]
         pid = d["pid"]
-        if 1920 <= byr and byr <= 2002 and \
-           2010 <= iyr and iyr <= 2020 and \
-           2020 <= eyr and eyr <= 2030 and \
-           ((units == "in" and 59 <= ht and ht <= 76) or
-            (units == "cm" and 150 <= ht and ht <= 193)) and \
+        if 1920 <= byr <= 2002 and \
+           2010 <= iyr <= 2020 and \
+           2020 <= eyr <= 2030 and \
+           ((units == "in" and 59 <= ht <= 76) or
+            (units == "cm" and 150 <= ht <= 193)) and \
            hcl[0] == "#" and len(hcl[1:]) == 6 and \
             set(hcl[1:]).issubset(valid_hair) and \
            ecl in valid_eyecolors and \
