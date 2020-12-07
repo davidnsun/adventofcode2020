@@ -23,9 +23,9 @@ for line in lines:
     d[L[0]] = temp
 
 result = 0
-def compute(bag):
+def compute(target):
     result = 0
-    for (n,bag) in d[bag]:
+    for (n,bag) in d[target]:
         if n == 0:
             return result
         result += n + n*compute(bag)
