@@ -20,12 +20,10 @@ result = containers(target,result)
 # containing them
 # you know when to stop once there's nothing more to add (len before = len after)
 unvis = result
-while True: # BRRRRRRRRR
+while len(unvis) > 0: # BRRRRRRRRR
     new = set()
     for target in unvis:
         new = containers(target,new)
     result = result.union(new)
     unvis = new
-    if len(unvis) == 0:
-        break
 print(len(result))

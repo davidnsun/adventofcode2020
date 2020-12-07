@@ -3,7 +3,7 @@ lines = input_file.read().split("\n")
 input_file.close()
 lines = lines[:-1] # get rid of last ['']
 
-# create dict mapping bag string to string of bags within
+# create dict mapping bag string to list of (n,bag) for every n bags within
 target = "shiny gold"
 end = "no other bags."
 d = dict()
