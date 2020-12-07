@@ -2,9 +2,10 @@ input_file = open("input.txt")
 lines = input_file.read().split("\n")
 input_file.close()
 lines = lines[:-1] # get rid of last ['']
+
+# create dict mapping bag string to string of bags within
 target = "shiny gold"
 end = "no other bags."
-# create dict mapping bag string to string of bags within
 d = dict()
 for line in lines:
     temp = list()
