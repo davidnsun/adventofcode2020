@@ -9,18 +9,18 @@ end = "no other bags."
 d = dict()
 for line in lines:
     temp = list()
-    L = line.split(" bags contain ")
-    if L[1] == end: # L = ['shiny gold', '3 bright turquoise bags, 1 blahblah...']
-        d[L[0]] = [(0,"")]
+    outer,inner = line.split(" bags contain ")
+    if inner == end: # [outer,inner] = ['shiny gold', '3 bright turquoise bags, 1 blahblah...']
+        d[outer] = [(0,"")]
         continue
-    l = L[1].split(", ")
-    for phrase in l: # l = ['3 bright turquoise bags', ...]
+    L = inner.split(", ")
+    for phrase in L: # L = ['3 bright turquoise bags', '1 blahblah...',...]
         frags = phrase.split(" bag") # phrase = '3 bright turquoise bags'
         relevant = frags[0] # frags = ['3 bright turquoise', 's']
         num = int(relevant[0:2]) # relevant = '3 bright turquoise'
         bag = relevant[2:]
         temp.append((num,bag))
-    d[L[0]] = temp
+    d[outer] = temp
 
 result = 0
 def compute(target):
