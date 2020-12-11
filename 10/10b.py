@@ -5,8 +5,7 @@ input_file.close()
 
 L = [int(line) for line in lines]
 L = sorted(L)
-L = [0] + L
-L = L + [L[-1]+3]
+L = [0] + L + [L[-1]+3]
 result = 0
 total = [1]
 for i in range(1,len(L)):
