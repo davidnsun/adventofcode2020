@@ -2,6 +2,7 @@ with open("input.txt") as input_file:
     lines = input_file.read().split("\n")
 lines = lines[:-1]
 
+# Get set of all fields and dict mapping field to valid intervals
 d = dict()
 s = set()
 for i in range(20):
@@ -19,6 +20,7 @@ for i in range(20):
 # first comma sep line of stuff starts on 26th line (index 25)
 # 28-974 valid range for all
 
+# Filter for valid lines
 valid = list()
 for i in range(25,len(lines)):
     line = lines[i]
@@ -26,12 +28,13 @@ for i in range(25,len(lines)):
     if sum([27 <= elem <= 973 for elem in L]) == 20:
         valid.append(L)
 
-S = list() # list of sets (of candidate fields)
+# Get list of sets (of valid candidate fields)
+S = list()
 for j in range(len(valid[0])):
     cand = s.copy()
     for i in range(len(valid)):
-        L = valid[i]
-        value = L[j] # 917
+        L = valid[i] # if i = 0, L = [917,...]
+        value = L[j] # if j = 0, value = 917
         invalid = set()
         for field in cand:
             (l1,u1),(l2,u2) = d[field]
@@ -40,6 +43,7 @@ for j in range(len(valid[0])):
         cand = cand.difference(invalid)
     S.append(cand)
 
+# Get my ticket as a list of ints
 myticket = [int(s) for s in lines[22].split(",")]
 
 # if len(S[i]) == 1 then name = list(S[i])[0]
